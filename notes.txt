@@ -1,0 +1,43 @@
+http://codingheroes.io/resources/
+
+Resources for CSS styling
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+above is added as a reset to get rid of default margin and padding.
+
+box-sizing: border-box => borders and paddings are no longer added to the total
+width or total height.
+
+font properties are usually inherited, that's why we are putting the font
+specifications in body instead of the universal selector (*)
+
+line-height: 1.7 => 1.7 times the height of what it would be regularly (it is relative to the font size)
+
+height: 95vh => the height of the element should be 95% of the viewport height
+
+background-image: url(../img/hero.jpg); => example of how to load image
+
+background-size: cover; => whatever the width of the of the element, it will cover that width, cropping if necessary
+
+background-position: top; => top of image stays at the top of the container (bottom of image will be cropped)
+
+background-image: linear-gradient(#7ed56f, #28b485), url(../img/hero.jpg); => this allows for two background images, one on top of the other. Leftmost positions takes higher precedence
+
+linear-gradient(to right bottom, #7ed56f, #28b485) => changes linearly from color to the left upper corner to the right bottom corner, due to specifiying 'to right bottom' for the first parameter
+
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(113, 236, 195, 0.8)), url(../img/hero.jpg); => to get it rgba, put your cursor in the color, click the # value of the color until it goes to rgb, then slide down the opacity slider.
+
+  body {
+      padding: 30px
+  }
+
+The technique above allows you to put space around the entire webpage.
+
+clip-path: polygon(0 100%, 100% 0, 100% 200px, 0 100%) => this allows you to create a shape from the element. Use percentages to take up the whole width/height of element. Coordinate 0, 0 relates to the top left of the element. Points go clockwise to connect them.
+
+Use clippy (from resource website) => preset shapes that you can copy and paste
