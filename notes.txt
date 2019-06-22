@@ -1,5 +1,9 @@
 http://codingheroes.io/resources/
 
+Section 2: Natours Project - Part 1
+
+Lecture 6: Building the Header - Part 1
+
 Resources for CSS styling
 
 * {
@@ -41,3 +45,367 @@ The technique above allows you to put space around the entire webpage.
 clip-path: polygon(0 100%, 100% 0, 100% 200px, 0 100%) => this allows you to create a shape from the element. Use percentages to take up the whole width/height of element. Coordinate 0, 0 relates to the top left of the element. Points go clockwise to connect them.
 
 Use clippy (from resource website) => preset shapes that you can copy and paste
+
+Lecture 7 - Building the Header - Part 2 
+
+Better practice is to make a small container (div) that wraps the image
+
+alt - to describe image for search engine optimization (SEO) but also for the case if an image
+fails to load
+
+when using position: absolute, make sure that the parent element to relative
+
+Use H1 for the title of the website
+
+Use spans when you want to style the text within header (h1, h2, p)
+
+span by default is an inline element
+
+To get things on top of each other, it is a good idea to use block elements (display: block)
+
+For placing elements in center, best to use absolute
+
+can translate elements by using the translate property:
+
+transform: translate(-50%, -50%);
+
+^ What this does, is move the current element 50% of its own width to the left, and then 50% of its height up. This is because the top left point is currently on the center, so we reflect the element over this point.
+
+Lecture 8: Cool CSS Animations
+
+animation-delay: 3s => delays the animation 3 seconds before animation starts
+animation-iteration-count: 3 => animation will happen 3 times
+animation-timing-function: functions you can specify to change speed of animation (ease, linear)
+
+backface-visibility: hidden => put this in the main element. It determines whether the back part of the element when we transform it is visible or hidden for the user.
+
+make sure to turn on backface-visibility to get rid of random shakes after animation finishes, and put it in the parent elemen
+
+keyframes@ :
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+The 0% and 100% denotes the start and end of the animation. The opacity of 0 at the beginning means it will be invisible, then turn visible when the animation ends. You can add any percentage to control different events.
+
+Tip: 
+
+Press cmd-D to highlight the next instance, while keeping previous instances
+
+use animation to make different animations all over the place:
+
+animation: (animationName) (duration) (animation-timing-function)
+
+Lecture 9: Building a Complex Animated Button
+
+use the a (anchor) tag for links
+
+.btn:link => pseudo class 
+
+pseudo class are a special state of selectors.
+
+the :link pseudo class represents an element that hasn't been visited yet.
+
+the :visited pseudo class represents an element that has been clicked 
+
+usually are both put together so they can override values
+
+have buttons be an a element, to provide more flexibility
+
+have one class be for the btn itself (shared by all buttons) 
+
+other classes for different colors
+
+inline block elements are treated as if they were text (can align them)
+
+:active -> whenever the element is clicked
+
+border-radius => make rounded edges for element, doesn't matter pixel used
+
+transition property => choose other properties to animate, and specify time
+
+transition will be from the initial state
+
+box-shadow syntax: x length, y length, bluriness, color
+
+box-shadow when far away, larger shadow, more blurry
+
+box-shadow when closer, smaller shadow, less blurry
+
+
+Section 3: CSS Behind the Scenes
+
+Lecture 12 - 3 Pillars of writing good HTML and CSS
+
+Responsive Design:
+
+Build one website that works beautifully across all screen sizes on all devices
+
+- Fluid layouts
+- Media queries
+- Responsive images
+- Correct units
+- Desktop first vs. Mobile first
+
+Maintainable and Scalable Code:
+
+- Clean
+- Easy to Understand
+- Growth 
+- Reusable
+- How to organize files
+- How to name classes
+- How to structure HTML
+
+Web Performance:
+
+- Less HTTP Requests
+- Less Code
+- Compress Code
+- Use CSS Preprocessor
+- Less Images
+- Compress Images 
+
+Lecture 13 - CSS Behind the Scenes
+
+Starting point: Browser loads HTML file
+
+Parses HTML
+
+Browser builds DOM - Document Object Model (describes entire web document)
+
+Loads CSS files
+
+Parses CSS: 2 steps
+1. Resolve conflicting CSS declarations (Cascade)
+2. Process final CSS values
+
+Decoded CSS is stored in CSS Object Model -> CSSOM
+
+with DOM and CSSOM -> Render Tree is created
+
+Browser renders page using visual formatting Model
+
+Website is rendered onto screen
+
+Lecture 14: How CSS is parsed -> Cascade and Specificity
+
+CSS Rule 
+
+.my-class {
+    color: blue;
+    text-align: center;
+}
+
+.my-class => selector
+
+{everything inside} => declaration block
+
+text-align: center; => declaration
+
+property => text-align
+
+center => declared value
+
+Cascade => process of combining different stylesheets and resolving 
+conflicts between different CSS rules and declarations, when more than one rule applies to a 
+certain element.
+
+Different CSS sources:
+- Author (developer)
+- User
+- User Agent (Browser)
+
+Precedence:
+
+Importance (Weight) -> Specificity -> Source Order
+
+Importance:
+
+1. User !important declarations
+2. Author !important declarations
+3. Author declarations
+4. User declarations
+5. Default browser declarations
+
+If the importances are the same -> Specificity:
+
+1. Inline styles
+2. IDs
+3. Classes, pseudo-classes, attribute
+4. Elements, pseudo-elements
+
+Specificity can be visualized as a number for each of the categories ex. (0, 0, 0, 0)
+
+Count the number of occurences in the selector:
+
+How to compare => Go left to right, if same number, continue, once there is a column with
+one bigger than the other, choose that one
+
+If the specificity is the same -> source order:
+
+The last declaration in the code will override all other declarations and will be applied
+
+Important info:
+
+only use !important as a last resource, better to use correct specificities (more maintainable code)
+
+inline styles is bad practice 
+
+selector with 1 id is more specific than 1000 classes
+
+selector that has 1 class is more specific than 1000 elements
+
+universal selector (*) has a specificity value (0, 0, 0, 0)
+
+Rely more on specificity than order of selectors
+
+Always put your author stylesheet last, to override 3rd party stylesheets
+
+Lecture 16: Value Processing
+
+1. Declared Value (declarations)
+2. Cascaded Value
+3. Specified Value (If no cascade)
+4. Computed Value (relative units to absolute)
+5. Used Value (Final calculations)
+6. Actual Value (Usually rounding or restrictions from browser/device)
+
+REM unit is always relative to the root font size 
+
+Parents width is the reference for percentage based calculations
+
+for fonts:
+
+% => percentage of parent's font size
+em => em * font size of parent 
+
+lengths:
+
+% => percentage of parent's width
+em => em * font size of current element 
+
+REM:
+rem => rem * root font size 
+
+Key Points:
+
+- percentages and relative values are converted to pixels
+
+Lecture 17: Inheritance
+
+ex. 
+
+.parent {
+    font-size: 20px;
+    line-height: 150%;
+}
+
+.child {
+    font-size: 25px;
+}
+
+The line-height property is inherited. The value of the line-height will be 
+150% of the parent font size, so it's 30px.
+
+- properties related to text are inherited
+
+- computed value or property is inherited, not the declared value 
+
+- inherit forces inheritance on a certain property
+
+- initial keyword resets a property to its initial value
+
+Lecture 18: Converting px to REM 
+
+Lecture 19: The Visual Formatting Model
+
+Visual Formatting Model - Algorithm that calculates boxes and determines the layout of these
+boxes, for each element in the render tree, in order to determine the final layout of the page.
+
+Box Model:
+
+Content - text, images, etc. 
+
+Padding - Transparent area around content, inside of box 
+
+Border - Goes around padding
+
+Margin - space between boxes
+
+Fill area - area that gets filled by background color/image 
+
+always use box-sizing: border box! To help maintain consistent sizing without padding/margin
+
+Block-level boxes:
+
+display: block (also flex, list-item, table)
+
+100% of parent's width
+
+Formed vertically, one after another
+
+Inline boxes:
+
+display: inline;
+
+occupies only content's space
+
+no line breaks
+
+no heights/widths 
+
+everything except vertical margin (vertical margin can be inherited though)
+
+doesn't follow box model
+
+Inline-block box:
+
+display: inline-block;
+
+Use only content's space
+
+no line breaks
+
+follows box model
+
+Positioning Schemes:
+
+1. Normal Flow
+
+- Not floated
+- Not absolutely positioned
+- laid out according to source order
+
+2. Floats
+
+- Element is removed from normal Flow
+- text and inline elements will wrap around floated element
+- container will not adjust its height to the element
+
+3. Absolute Positioning
+
+- Element is removed from normal Flow
+- no impact on surrounding content or elements
+
+Stacking Context: 
+
+use z index to create a new layer
+
+higher z index appears on top
+
+
+
