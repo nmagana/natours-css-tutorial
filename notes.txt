@@ -145,6 +145,30 @@ box-shadow when far away, larger shadow, more blurry
 
 box-shadow when closer, smaller shadow, less blurry
 
+Lecture 10: Building a Complex Animated Button Part 2
+
+pseudo-elements: allows us to style certain parts of elements.
+
+after pseudo-element adds a virtual element right after the element that
+you are selecting
+
+need to put a content and display property always for pseudo elements
+
+treat pseudo element like a child
+
+do ::after for both the btn and the btn color selectors 
+
+put z-index -1 to put it behind the other button
+
+use height and width 100%, because it needs to be the same height as the 
+parent (main button)
+
+Article on stacking context: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context
+
+https://stackoverflow.com/questions/20851452/z-index-is-canceled-by-setting-transformrotate/20852489#20852489
+
+
+
 
 Section 3: CSS Behind the Scenes
 
@@ -406,6 +430,3 @@ Stacking Context:
 use z index to create a new layer
 
 higher z index appears on top
-
-
-
